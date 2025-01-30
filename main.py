@@ -26,27 +26,27 @@ walls = [
         [True, True, False, True], 
         [False, False, True, False], 
         [True, True, False, True], 
-        [True, False, True, True], 
+        [True, True, True, True], 
         [False, False, True, True]
     ],
     [
         [False, True, False, True], 
         [True, True, False, False], 
-        [True, False, True, True], 
-        [False, True, True, False], 
+        [True, True, True, True], 
+        [False, True, True, True], 
         [False, True, False, False]
     ],
     [
-        [False, False, False, True], 
         [False, True, False, True], 
-        [True, False, False, False], 
+        [False, True, False, True], 
+        [True, True, False, True], 
         [True, True, True, True], 
         [False, False, True, True]
     ],
     [
-        [True, False, False, False], 
+        [True, False, False, True], 
         [True, False, True, True], 
-        [False, False, True, False], 
+        [False, False, True, True], 
         [True, False, False, True], 
         [False, False, True, False]
     ]
@@ -220,12 +220,26 @@ def wallRight():
         return not walls[x_pos][y_pos][0]
 
 renderMap()
-delay = 500 # set the delay of simulation
+delay = 350 # set the delay of simulation
 
 # Execucao: ----------------------------------
 
 while True:
-    moveForward()
+    if not wallRight():
+        rotateClockWise()
+        moveForward()
+
+    elif not wallFront():
+        moveForward()
+
+    elif not wallLeft():
+        rotateCounterClockWise();
+        moveForward()
+
+    elif not wallBack():
+        rotateCounterClockWise()
+        rotateCounterClockWise()
+        moveForward()
 
 # --------------------------------------------
 renderMap()
