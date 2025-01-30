@@ -224,22 +224,6 @@ delay = 350 # set the delay of simulation
 
 # Execucao: ----------------------------------
 
-while True:
-    if not wallRight():
-        rotateClockWise()
-        moveForward()
-
-    elif not wallFront():
-        moveForward()
-
-    elif not wallLeft():
-        rotateCounterClockWise();
-        moveForward()
-
-    elif not wallBack():
-        rotateCounterClockWise()
-        rotateCounterClockWise()
-        moveForward()
 
 # --------------------------------------------
 renderMap()
